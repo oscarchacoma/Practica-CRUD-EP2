@@ -154,11 +154,11 @@
    },
    {
       "id": 19,
-      "name": "Sandwich de mortadelaaa",
+      "name": "Sandwich ",
       "price": "2000",
-      "discount": "20",
+      "discount": "30",
       "category": "in-sale",
-      "description": "asdasd",
-      "image": "default-image.png"
+      "description": "El mas pedido",
+      "image": "1676644103915_products_.jpg"
    }
 ]

@@ -3,9 +3,8 @@ const path = require('path');
 
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
-const writeJson = (products) => {
-	fs.writeFileSync(productsFilePath, JSON.stringify(products), {encoding: "utf-8"})
-}
+const {writeJson} = require("../data")
+
 
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
@@ -50,7 +49,7 @@ const controller = {
 		}
 		products.push(newProduct);
 
-		writeJson(products); //escribe el JSON - y persiste 
+		writeJson("productsDataBase.json",products); //escribe el JSON - y persiste 
 		
 		res.redirect("/products/");
 	},
@@ -79,9 +78,10 @@ const controller = {
 			}
 		});
 
-		writeJson(products); //sobreescribre el JSON
+		writeJson("productsDataBase.json",products); //sobreescribre el JSON
 		
-		res.send("Producto editado correctamente")
+		res.redirect("/products");
+
 	},
 
 	// Delete - Delete one product from DB
@@ -94,9 +94,9 @@ const controller = {
 				products.splice(productToDestroy, 1);
 			}
 		});
-		writeJson(products)
+		writeJson("productsDataBase.json",products)
 
-		res.send("Producto eliminado correctamente")
+		res.redirect("/products");
 
 
 		//let newProductsArray = products.filter(product => product.id !== productId)
